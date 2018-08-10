@@ -8,7 +8,11 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()  <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
+@property (weak, nonatomic) IBOutlet UILabel *tipAmountLabel;
+
+@property (nonatomic, strong) NSString *billAmount;
 
 @end
 
@@ -16,14 +20,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self setupTextField];
+
+
+}
+
+- (void)setupTextField {
+    self.billAmountTextField.delegate = self;
+    self.billAmountTextField.keyboardType = UIKeyboardTypeDefault;
+    self.billAmountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    
+
+}
+
+- (IBAction)calculateTip:(id)sender {
+    [self.billAmountTextField resignFirstResponder];
+    self.billAmount = self.billAmountTextField.text;
+    
+    self.tipAmountLabel.text = [self calculateTip];
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSString*)calculateTip {
+    NSNumber *afterTipBillAmount = @([self.billAmount floatValue] * 1.15);  // add 15% tip
+    NSString *afterTipBillAmountString = [[NSString alloc] initWithFormat:@"%@", afterTipBillAmount];
+    return afterTipBillAmountString;
 }
+
+
+
+
+
 
 
 @end
