@@ -42,6 +42,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pO2-6E-IZP">
+                                <rect key="frame" x="85" y="229" width="207" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.95523184539999995" green="0.78343824959999997" blue="0.39792622379999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -49,6 +56,7 @@
                     <connections>
                         <outlet property="billAmountTextField" destination="KNT-qA-0yj" id="YH0-YS-gNJ"/>
                         <outlet property="tipAmountLabel" destination="fOv-Bi-iSH" id="g6f-XH-aeI"/>
+                        <outlet property="tipPercentageTextField" destination="pO2-6E-IZP" id="Lb1-lO-cfG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -11,8 +11,10 @@
 @interface ViewController ()  <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *tipAmountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *tipPercentageTextField;
 
 @property (nonatomic, strong) NSString *billAmount;
+@property (nonatomic, strong) NSString *tipPercentage;
 
 @end
 
@@ -36,15 +38,15 @@
 - (IBAction)calculateTip:(id)sender {
     [self.billAmountTextField resignFirstResponder];
     self.billAmount = self.billAmountTextField.text;
-    
+    self.tipPercentage = self.tipPercentageTextField.text;
     self.tipAmountLabel.text = [self calculateTip];
 }
 
 
 - (NSString*)calculateTip {
-    NSNumber *afterTipBillAmount = @([self.billAmount floatValue] * 1.15);  // add 15% tip
-    NSString *afterTipBillAmountString = [[NSString alloc] initWithFormat:@"%@", afterTipBillAmount];
-    return afterTipBillAmountString;
+    NSNumber *tipAmount = @([self.billAmount floatValue] * ([self.tipPercentage floatValue]/100 + 1));
+    NSString *tipAmountString = [[NSString alloc] initWithFormat:@"$ %@", tipAmount];
+    return tipAmountString;
 }
 
 
